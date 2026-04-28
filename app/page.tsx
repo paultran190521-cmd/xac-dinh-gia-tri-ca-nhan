@@ -21,12 +21,12 @@ export default function CompassApp() {
   return (
     <div className="relative z-10 flex flex-col min-h-screen w-full mx-auto px-6 lg:px-16 overflow-hidden">
       <header className="flex justify-between items-center border-b border-white/10 h-20 shrink-0">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 bg-[#DF9317]" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
-          <span className="font-sans text-2xl font-bold tracking-tight uppercase">La Bàn Cuộc Đời</span>
+        <div className="flex items-center gap-3 sm:gap-4 ml-16 sm:ml-24">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#DF9317] shrink-0" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+          <span className="font-sans text-lg sm:text-2xl font-bold tracking-tight uppercase whitespace-nowrap">Thay Đổi Tâm Thức</span>
         </div>
-        <div className="text-xs uppercase tracking-widest opacity-60 hidden sm:block font-bold">
-          Bản Đồ Giá Trị Cá Nhân
+        <div className="text-[10px] sm:text-xs uppercase tracking-widest opacity-60 hidden md:block font-bold">
+          La Bàn Nội Tâm
         </div>
       </header>
 
