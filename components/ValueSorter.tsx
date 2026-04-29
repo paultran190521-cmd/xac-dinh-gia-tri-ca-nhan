@@ -32,7 +32,7 @@ export default function ValueSorter({ onComplete }: { onComplete: (values: Value
         <p className="mt-4 text-xs tracking-widest uppercase text-[#1992B0] font-bold">Đã chọn: {selectedIds.size} / 8</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 overflow-y-auto max-h-[60vh] p-4 pr-6 custom-scrollbar">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 p-4">
         {ALL_VALUES.map((val) => {
           const isSelected = selectedIds.has(val.id);
           return (

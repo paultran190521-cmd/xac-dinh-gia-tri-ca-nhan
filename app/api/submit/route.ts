@@ -53,11 +53,11 @@ export async function POST(req: Request) {
     const { name, email, phone, topValues, scenarioAnswers } = await req.json();
 
     // 1. Send data to Google Sheets via Webhook (Google Apps Script)
-    const sheetsWebhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL;
+    const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
     
     if (sheetsWebhookUrl) {
       try {
-        await fetch(sheetsWebhookUrl, {
+        const response = await fetch(sheetsWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -68,9 +68,11 @@ export async function POST(req: Request) {
             topValues: topValues.map((v: any) => v.name).join(', '),
           }),
         });
-        console.log('Saved to Google Sheets');
+        const textResponse = await response.text();
+        console.log('Google Sheets Webhook Response Status:', response.status);
+        console.log('Google Sheets Webhook Response:', textResponse);
       } catch (e) {
-        console.error('Error saving to sheets:', e);
+        console.error('Network Error saving to sheets:', e);
       }
     }
 

@@ -19,9 +19,9 @@ export default function CompassApp() {
   const [finalCoreValues, setFinalCoreValues] = useState<ValueCard[]>([]);
 
   return (
-    <div className="relative z-10 flex flex-col min-h-screen w-full mx-auto px-6 lg:px-16 overflow-hidden">
+    <div className="relative z-10 flex flex-col min-h-screen w-full mx-auto px-6 lg:px-16 overflow-x-hidden">
       <header className="flex justify-between items-center border-b border-white/10 h-20 shrink-0">
-        <div className="flex items-center gap-3 sm:gap-4 ml-16 sm:ml-24">
+        <div className="flex items-center gap-3 sm:gap-4 ml-16 sm:ml-28 md:ml-32">
           <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#DF9317] shrink-0" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
           <span className="font-sans text-lg sm:text-2xl font-bold tracking-tight uppercase whitespace-nowrap">Thay Đổi Tâm Thức</span>
         </div>
