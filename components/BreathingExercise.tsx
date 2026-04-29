@@ -38,39 +38,39 @@ export default function BreathingExercise({ onComplete }: { onComplete: () => vo
   const instruction = phase === 'inhale' ? 'Hít vào thật sâu...' : phase === 'hold' ? 'Giữ hơi thở...' : 'Từ từ thở ra...';
 
   return (
-    <div className="fixed inset-0 z-20 pointer-events-auto flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none">
-      <div className="absolute top-[15%] sm:top-[20%] w-full px-6 flex flex-col items-center">
-        <h2 className="text-4xl font-sans font-bold uppercase tracking-widest text-[#DF9317] mb-6 text-center drop-shadow-md">
-          Dừng lại một chút
+    <div className="flex flex-col items-center justify-between min-h-[75vh] w-full py-8 text-center relative z-20">
+      <div className="w-full max-w-2xl mx-auto space-y-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#DF9317] drop-shadow-md whitespace-nowrap">
+          DỪNG LẠI MỘT CHÚT
         </h2>
-        <p className="text-white/90 text-center max-w-md font-sans text-lg leading-relaxed text-shadow">
+        <p className="text-white/90 font-sans text-base sm:text-lg leading-relaxed text-shadow px-4 max-w-md mx-auto">
           Hãy để tâm trí bạn tĩnh lặng. Dành phút giây này để quay về với nhịp thở của chính mình.
         </p>
       </div>
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-56 h-56">
+      <div className="relative flex items-center justify-center w-72 h-72 my-8">
         <motion.div
           animate={{ scale: circleScale }}
           transition={{ duration: phase === 'exhale' ? 6 : 4, ease: "easeInOut" }}
-          className="absolute w-40 h-40 rounded-full bg-[#1992B0]/10 border border-[#DF9317] shadow-[0_0_30px_rgba(223,147,23,0.3)]"
+          className="absolute inset-0 m-auto w-48 h-48 rounded-full bg-[#1992B0]/10 border border-[#DF9317] shadow-[0_0_30px_rgba(223,147,23,0.3)] origin-center"
         />
         <motion.div
           animate={{ scale: circleScale * 0.8 }}
           transition={{ duration: phase === 'exhale' ? 6 : 4, ease: "easeInOut" }}
-          className="absolute w-40 h-40 rounded-full bg-[#1992B0]/30 blur-2xl"
+          className="absolute inset-0 m-auto w-48 h-48 rounded-full bg-[#1992B0]/30 blur-2xl origin-center"
         />
-        <div className="z-10 text-[#DF9317] font-bold text-lg uppercase tracking-widest font-sans drop-shadow-[0_0_10px_rgba(223,147,23,1)] text-center whitespace-nowrap">
+        <div className="z-10 relative text-[#DF9317] font-bold text-sm sm:text-lg uppercase tracking-widest font-sans drop-shadow-[0_0_15px_rgba(223,147,23,1)] text-center whitespace-nowrap px-4">
           {instruction}
         </div>
       </div>
 
-      <div className="absolute bottom-[15%] sm:bottom-[20%] flex flex-col items-center gap-6 w-full">
+      <div className="flex flex-col items-center gap-6">
         <div className="text-[#1992B0] font-bold text-sm tracking-widest uppercase bg-[#1992B0]/10 px-6 py-2 rounded-full border border-[#1992B0]/30 shadow-[0_0_15px_rgba(25,146,176,0.2)] backdrop-blur-md">
           Còn lại {timeLeft} giây
         </div>
         <button
           onClick={onComplete}
-          className="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-all hover:scale-105"
+          className="text-xs uppercase tracking-widest text-white/50 hover:text-[#DF9317] transition-all hover:scale-105 mb-4"
         >
           Bỏ qua
         </button>

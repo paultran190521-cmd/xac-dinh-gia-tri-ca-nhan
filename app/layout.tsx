@@ -13,7 +13,12 @@ const beVietnamPro = Be_Vietnam_Pro({
 export const metadata: Metadata = {
   title: 'Thay Đổi Tâm Thức | La Bàn Nội Tâm',
   description: 'Ứng dụng tham vấn tâm lý dựa trên liệu pháp ACT, giúp bạn khám phá và xác định những giá trị cốt lõi nhất của bản thân để thay đổi tâm thức.',
-  keywords: ['thay đổi tâm thức', 'la bàn nội tâm', 'tâm lý học', 'chữa lành', 'mindfulness', 'giá trị cốt lõi', 'phát triển bản thân'],
+  keywords: [
+    'thay đổi tâm thức', 'la bàn nội tâm', 'tâm lý học', 'chữa lành', 'mindfulness', 
+    'giá trị cốt lõi', 'phát triển bản thân', 
+    'khám phá bản thân', 'trắc nghiệm tâm lý', 'liệu pháp ACT', 
+    'cách xác định giá trị cá nhân', 'giá trị cá nhân là gì'
+  ],
   icons: {
     icon: '/icon.svg',
   },

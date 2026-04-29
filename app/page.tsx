@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import BreathingExercise from '@/components/BreathingExercise';
+import NarrativeJourney from '@/components/NarrativeJourney';
 import ValueSorter from '@/components/ValueSorter';
 import ScenarioQuestions from '@/components/ScenarioQuestions';
 import ConflictResolver from '@/components/ConflictResolver';
@@ -10,13 +11,19 @@ import LeadCapture from '@/components/LeadCapture';
 import ResultCompass from '@/components/ResultCompass';
 import { ValueCard } from '@/lib/valuesData';
 
-type Phase = 'landing' | 'breathing' | 'sorting' | 'scenario' | 'conflict' | 'lead_capture' | 'result';
+type Phase = 'landing' | 'breathing' | 'narrative' | 'sorting' | 'scenario' | 'conflict' | 'lead_capture' | 'result';
 
 export default function CompassApp() {
   const [currentPhase, setCurrentPhase] = useState<Phase>('landing');
   const [selectedValues, setSelectedValues] = useState<ValueCard[]>([]);
   const [scenarioAnswers, setScenarioAnswers] = useState<Record<string, string>>({});
   const [finalCoreValues, setFinalCoreValues] = useState<ValueCard[]>([]);
+
+  const phaseVariants = {
+    initial: { opacity: 0, filter: 'blur(10px)', scale: 0.95 },
+    animate: { opacity: 1, filter: 'blur(0px)', scale: 1, transition: { duration: 1.5, ease: 'easeOut' as const } },
+    exit: { opacity: 0, filter: 'blur(10px)', scale: 1.02, transition: { duration: 0.8, ease: 'easeIn' as const } }
+  };
 
   return (
     <div className="relative z-10 flex flex-col min-h-screen w-full mx-auto px-6 lg:px-16 overflow-x-hidden">
@@ -56,13 +63,22 @@ export default function CompassApp() {
           )}
 
           {currentPhase === 'breathing' && (
-            <motion.div className="w-full flex justify-center" key="breathing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <BreathingExercise onComplete={() => setCurrentPhase('sorting')} />
+            <motion.div className="w-full flex justify-center" key="breathing" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
+              <BreathingExercise onComplete={() => setCurrentPhase('narrative')} />
+            </motion.div>
+          )}
+
+          {currentPhase === 'narrative' && (
+            <motion.div className="w-full flex justify-center" key="narrative" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
+              <NarrativeJourney 
+                onNext={() => setCurrentPhase('sorting')} 
+                onBack={() => setCurrentPhase('breathing')} 
+              />
             </motion.div>
           )}
 
           {currentPhase === 'sorting' && (
-            <motion.div className="w-full h-full flex justify-center" key="sorting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="w-full h-full flex justify-center" key="sorting" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
               <ValueSorter onComplete={(values) => {
                 setSelectedValues(values);
                 setCurrentPhase('scenario');
@@ -71,7 +87,7 @@ export default function CompassApp() {
           )}
 
           {currentPhase === 'scenario' && (
-            <motion.div className="w-full h-full flex justify-center" key="scenario" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="w-full h-full flex justify-center" key="scenario" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
               <ScenarioQuestions 
                 values={selectedValues} 
                 onComplete={(answers) => {
@@ -83,7 +99,7 @@ export default function CompassApp() {
           )}
 
           {currentPhase === 'conflict' && (
-            <motion.div className="w-full h-full flex justify-center" key="conflict" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="w-full h-full flex justify-center" key="conflict" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
               <ConflictResolver 
                 values={selectedValues} 
                 onComplete={(topValues) => {
@@ -95,7 +111,7 @@ export default function CompassApp() {
           )}
 
           {currentPhase === 'lead_capture' && (
-            <motion.div className="w-full h-full flex justify-center" key="lead_capture" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="w-full h-full flex justify-center" key="lead_capture" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
               <LeadCapture 
                 finalValues={finalCoreValues}
                 onComplete={() => {
@@ -106,7 +122,7 @@ export default function CompassApp() {
           )}
 
           {currentPhase === 'result' && (
-            <motion.div className="w-full h-full flex justify-center" key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="w-full h-full flex justify-center" key="result" variants={phaseVariants} initial="initial" animate="animate" exit="exit">
               <ResultCompass coreValues={finalCoreValues} />
             </motion.div>
           )}
