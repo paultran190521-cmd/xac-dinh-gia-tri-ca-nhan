@@ -7,9 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://thaydoitamthuc.com/sitemap.xml',
+    sitemap: 'https://gtcn.thaydoitamthuc.com/sitemap.xml',
   };
 }
-User-agent: *
-Allow: /
-Sitemap: https://gtcn.thaydoitamthuc.com/sitemap.xml
