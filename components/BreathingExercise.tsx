@@ -21,6 +21,15 @@ export default function BreathingExercise({ onComplete }: { onComplete: () => vo
   }, [timeLeft, onComplete]);
 
   useEffect(() => {
+    // Scroll to top and disable scrolling globally during breathing exercise
+    window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  useEffect(() => {
     let timeout: NodeJS.Timeout;
     
     if (phase === 'inhale') {
@@ -38,17 +47,19 @@ export default function BreathingExercise({ onComplete }: { onComplete: () => vo
   const instruction = phase === 'inhale' ? 'Hít vào thật sâu...' : phase === 'hold' ? 'Giữ hơi thở...' : 'Từ từ thở ra...';
 
   return (
-    <div className="flex flex-col items-center justify-between min-h-[75vh] w-full py-8 text-center relative z-20">
-      <div className="w-full max-w-2xl mx-auto space-y-6">
+    <div className="flex flex-col items-center justify-between h-[100dvh] w-full py-8 sm:py-12 text-center pointer-events-none relative">
+      {/* Title section - at top */}
+      <div className="w-full max-w-2xl mx-auto space-y-4 pt-16 sm:pt-24 px-4 pointer-events-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#DF9317] drop-shadow-md whitespace-nowrap">
           DỪNG LẠI MỘT CHÚT
         </h2>
-        <p className="text-white/90 font-sans text-base sm:text-lg leading-relaxed text-shadow px-4 max-w-md mx-auto">
+        <p className="text-white/90 font-sans text-base sm:text-lg leading-relaxed text-shadow max-w-md mx-auto">
           Hãy để tâm trí bạn tĩnh lặng. Dành phút giây này để quay về với nhịp thở của chính mình.
         </p>
       </div>
 
-      <div className="relative flex items-center justify-center w-72 h-72 my-8">
+      {/* Circle - fixed precisely to match mandala */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full h-full">
         <motion.div
           animate={{ scale: circleScale }}
           transition={{ duration: phase === 'exhale' ? 6 : 4, ease: "easeInOut" }}
@@ -64,13 +75,14 @@ export default function BreathingExercise({ onComplete }: { onComplete: () => vo
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-6">
+      {/* Time and Skip button - at bottom */}
+      <div className="flex flex-col items-center gap-6 z-30 pointer-events-auto pb-10">
         <div className="text-[#1992B0] font-bold text-sm tracking-widest uppercase bg-[#1992B0]/10 px-6 py-2 rounded-full border border-[#1992B0]/30 shadow-[0_0_15px_rgba(25,146,176,0.2)] backdrop-blur-md">
           Còn lại {timeLeft} giây
         </div>
         <button
           onClick={onComplete}
-          className="text-xs uppercase tracking-widest text-white/50 hover:text-[#DF9317] transition-all hover:scale-105 mb-4"
+          className="text-xs uppercase tracking-widest text-white/50 hover:text-[#DF9317] transition-all hover:scale-105 px-6 py-4"
         >
           Bỏ qua
         </button>

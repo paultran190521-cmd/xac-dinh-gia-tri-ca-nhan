@@ -63,8 +63,13 @@ export default function ConflictResolver({
 
   return (
     <div className="flex flex-col items-center justify-center p-6 sm:p-10 min-h-[500px]">
-      <div className="mb-10 text-center">
-        <h2 className="text-4xl font-sans text-[#DF9317] mb-3 uppercase tracking-widest font-bold">Bước 3: Thử thách Giá Trị</h2>
+      <div className="mb-10 text-center flex flex-col items-center">
+        <h2 className="text-xl sm:text-2xl font-sans text-white/60 mb-2 uppercase tracking-widest font-bold">
+          Bước 3
+        </h2>
+        <h2 className="text-3xl sm:text-4xl font-sans text-[#DF9317] mb-3 uppercase tracking-widest font-bold">
+          Thử thách Giá Trị
+        </h2>
         <p className="text-white/80 font-sans max-w-lg mx-auto">
           Cuộc sống đôi khi buộc chúng ta phải lựa chọn. Nếu chỉ được giữ lại một điều để dẫn lối cho bạn ngay lúc này, bạn sẽ chọn gì?
         </p>

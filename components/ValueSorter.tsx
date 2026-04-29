@@ -22,9 +22,14 @@ export default function ValueSorter({ onComplete }: { onComplete: (values: Value
 
   return (
     <div className="flex flex-col p-6 sm:p-10 h-full min-h-[600px] w-full max-w-5xl">
-      <div className="mb-10 text-center">
-        <h2 className="text-4xl font-sans text-[#DF9317] mb-3 uppercase tracking-widest font-bold">Bước 1: Lựa chọn Giá Trị</h2>
-        <p className="text-white/80 font-sans max-w-2xl mx-auto">
+      <div className="mb-10 text-center flex flex-col items-center">
+        <h2 className="text-xl sm:text-2xl font-sans text-white/60 mb-2 uppercase tracking-widest font-bold">
+          Bước 1
+        </h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-sans text-[#DF9317] mb-3 uppercase tracking-widest font-bold whitespace-nowrap">
+          Lựa chọn Giá Trị
+        </h2>
+        <p className="text-white/80 font-sans max-w-2xl mx-auto mt-2">
           Hãy chọn ra tối đa 8 giá trị mà bạn cảm thấy quan trọng nhất với mình ngay lúc này.
           <br className="hidden sm:block" />
           Không có đúng hay sai, chỉ có sự chân thật từ nội tâm bạn.

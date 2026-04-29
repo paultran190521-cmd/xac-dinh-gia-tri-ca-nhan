@@ -47,7 +47,7 @@ export default function LeadCapture({ onComplete, finalValues }: { onComplete: (
   return (
     <div className="flex flex-col items-center justify-center p-6 sm:p-10 min-h-[500px] w-full max-w-xl mx-auto">
       <div className="mb-10 text-center">
-        <h2 className="text-4xl font-sans text-[#DF9317] mb-4 uppercase tracking-widest font-bold drop-shadow-sm">
+        <h2 className="text-3xl sm:text-4xl font-sans text-[#DF9317] mb-4 uppercase tracking-widest font-bold drop-shadow-sm whitespace-nowrap">
           Nhận Kết Quả
         </h2>
         <p className="text-white/90 font-sans leading-relaxed max-w-md mx-auto relative z-10">

@@ -18,17 +18,17 @@ export default function ResultCompass({
 
   return (
     <div className="w-full flex flex-col lg:grid lg:grid-cols-[1.2fr_1fr] gap-10 items-start justify-center p-6 sm:p-10">
-      <div className="flex justify-center items-center relative w-full lg:sticky lg:top-10 h-[450px]">
+      <div className="flex justify-center items-center relative w-full lg:sticky lg:top-10 h-[350px] sm:h-[450px]">
         {/* Subtle glow behind the chart */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1992B0]/20 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="w-full h-full relative z-10 w-full max-w-[450px]">
           <ResponsiveContainer width="100%" height="100%">
-            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
+            <RadarChart cx="50%" cy="50%" outerRadius="45%" data={data}>
               <PolarGrid stroke="rgba(255,255,255,0.2)" />
               <PolarAngleAxis 
                 dataKey="subject" 
-                tick={{ fill: '#FFF', fontSize: 13, fontFamily: 'inherit' }} 
+                tick={{ fill: '#FFF', fontSize: 10, fontFamily: 'inherit' }} 
               />
               <Radar 
                 name="Giá trị" 
@@ -52,7 +52,7 @@ export default function ResultCompass({
       </div>
 
       <div className="w-full flex flex-col gap-6">
-        <h2 className="font-sans text-3xl mb-2 font-bold uppercase tracking-widest text-[#DF9317]">Top 5 Giá Trị Cốt Lõi</h2>
+        <h2 className="font-sans text-2xl sm:text-3xl mb-2 font-bold uppercase tracking-widest text-[#DF9317] text-center lg:text-left">TOP 5 GIÁ TRỊ CỐT LÕI</h2>
         <div className="flex flex-col gap-4">
           {coreValues.map((val, idx) => (
             <motion.div 
