@@ -72,8 +72,8 @@ export default function NarrativeJourney({ onNext, onBack }: NarrativeJourneyPro
             Mọi người xung quanh thường nhắc đến bạn như thế nào?
           </p>
           <h3 className="text-[#DF9317] font-sans text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(223,147,23,0.3)] pt-4">
-            "Và nếu ngày mai bạn không còn trên cuộc đời này nữa,
-            <br className="hidden sm:block" /> bạn muốn thế giới sẽ nhớ về bạn là người như thế nào?"
+            &quot;Và nếu ngày mai bạn không còn trên cuộc đời này nữa,
+            <br className="hidden sm:block" /> bạn muốn thế giới sẽ nhớ về bạn là người như thế nào?&quot;
           </h3>
         </motion.div>
       </motion.div>
